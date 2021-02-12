@@ -1,24 +1,19 @@
-# README
+# Improtación de contactos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Esta es una aplicación que le permite a los usuarios la importación de contactos para guardarlos en su base de datos. Los datos de los contactos son:
+- Nombre
+- Fecha de nacimiento
+- Telefono
+- Dirección
+- Tarjeta de crédito
+- Franquicia
+- Correo electrónico
 
-Things you may want to cover:
+La aplicación permite:
+- Cargar un archivo csv
+- Seleccionar la posicción de las columnas a las cuales corresponde el campo
+- Ver el listado de contactos importados por el usuario logueado
+- Ver el listado de los contactos fallidos
+- Ver el listado de los archivos csv cargado y su estado
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Para ingresar a la aplicación es necesario registrarse con un correo y una contraseña
