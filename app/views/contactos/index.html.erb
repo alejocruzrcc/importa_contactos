@@ -1,0 +1,31 @@
+<h1>Listado de Contactos importados</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Dirección</th>
+      <th scope="col">Tarjeta de crédito</th>
+      <th scope="col">Franquicia</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @contactos.each do |contacto| %>
+    <tr>
+      <th scope="row"><%= contacto.id %></th>
+      <td><%= contacto.nombre if contacto.nombre%></td>
+      <% I18n.locale = :es %>
+      <td><%= I18n.l(contacto.fechanac, format: '%Y %B %d') if contacto.fechanac%></td>
+      <td><%= contacto.telefono if contacto.telefono%></td>
+      <td><%= contacto.direccion if contacto.direccion%></td>
+      <td><%= contacto.tcredito.terminadaen if contacto.tcredito%></td>
+      <td><%= contacto.tcredito.franquicia if contacto.tcredito%></td>
+      <td><%= contacto.email if contacto.email %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= will_paginate @contactos %>

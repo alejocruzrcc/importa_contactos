@@ -1,0 +1,47 @@
+<h1>Nuevos Contactos </h1>
+<%= form_for @contacto, url: contactos_path do |f| %>
+  <% opciones = [[1, 0], [2, 1], [3, 2], [4, 3], [5, 4], [6, 5], [7, 6]] %>
+   <p>Seleccione la culumna en la que está ubicado cada campo en su archivo CSV: </p>
+   <table class="table table-striped">
+      <thead>
+         <tr>
+            <th scope="col">Columna</th>
+            <th scope="col">Posición</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <th> <%= label_tag 'nombre', 'Nombre' %> </th>
+            <th> <%= select_tag(:nombre, options_for_select(opciones, 0)) %> </th>
+         </tr>
+         <tr>
+            <th><%= label_tag 'fechanac', 'Fecha de nacimiento' %></th>
+            <th><%= select_tag(:fechanac, options_for_select(opciones, 1)) %></th>
+         </tr>
+         <tr>
+            <th><%= label_tag 'telefono', 'Teléfono' %></th>
+            <th><%= select_tag(:telefono, options_for_select(opciones, 2)) %></th>
+         </tr>
+         <tr>
+            <th><%= label_tag 'direccion', 'Dirección' %></th>
+            <th><%= select_tag(:direccion, options_for_select(opciones, 3)) %></th>
+         </tr>
+         <tr>
+            <th><%= label_tag 'tcredito', 'Tarjeta de crédito' %></th>
+            <th><%= select_tag(:tcredito, options_for_select(opciones, 4)) %></th>
+         </tr>
+         <tr>
+            <th><%= label_tag 'franquicia', 'Franquicia' %></th>
+            <th><%= select_tag(:franquicia, options_for_select(opciones, 5)) %></th>
+         </tr>
+         <tr>
+            <th><%= label_tag 'email', 'Correo electrónico' %></th>
+            <th><%= select_tag(:email, options_for_select(opciones, 6)) %></th>
+         </tr>
+      </tbody>
+   </table> 
+   <%= f.label :file, "Cargar archivo CSV" %>
+   <%= f.file_field :file, class: 'form-control-file', required: true %>
+   <br>
+   <%= f.button "Importar contactos", type: 'submit', class: 'btn btn-primary' %>
+<% end %>

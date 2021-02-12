@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Miscontactos</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+    <%= nav_bar static: :top do %>
+    <%= menu_group do %>
+        <%= menu_item "Inicio", home_path, method: :get %>
+        <%= menu_item "Cargar Contactos", new_contacto_path, method: :get %> 
+        <%= menu_item "Listado de Contactos", contactos_path, method: :get %>  
+        <%= menu_item "Contactos no importados con éxito", "/contactosfallidos", method: :get %>
+        <%= menu_item "Listado de Archivos", archivos_path, method: :get %> 
+        
+        <% if current_user %>
+          <%= menu_item "Cerrar sesión", destroy_user_session_path, method: :delete %>
+        <% end %>
+        
+    <% end %>
+<% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
