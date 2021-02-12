@@ -12,6 +12,7 @@
   </head>
 
   <body>
+  <% if current_user %>
     <%= nav_bar static: :top do %>
     <%= menu_group do %>
         <%= menu_item "Inicio", home_path, method: :get %>
@@ -19,10 +20,8 @@
         <%= menu_item "Listado de Contactos", contactos_path, method: :get %>  
         <%= menu_item "Contactos no importados con éxito", "/contactosfallidos", method: :get %>
         <%= menu_item "Listado de Archivos", archivos_path, method: :get %> 
-        
-        <% if current_user %>
-          <%= menu_item "Cerrar sesión", destroy_user_session_path, method: :delete %>
-        <% end %>
+        <%= menu_item "Cerrar sesión", destroy_user_session_path, method: :delete %>
+     <% end %>   
         
     <% end %>
 <% end %>

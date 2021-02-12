@@ -1,11 +1,19 @@
 class ContactosController < ApplicationController
   
   def new
-    @contacto = Contacto.new
+    if current_user
+      @contacto = Contacto.new
+    else
+      redirect_to home_path 
+    end
   end
 
   def index
-    @contactos = Contacto.where(usuario_id: current_user.id, valido: true).paginate(page: params[:page], per_page: 10)
+    if current_user
+      @contactos = Contacto.where(usuario_id: current_user.id, valido: true).paginate(page: params[:page], per_page: 10)
+    else
+      redirect_to home_path 
+    end
   end
 
   def destroy
@@ -24,7 +32,11 @@ class ContactosController < ApplicationController
   end
 
   def fallidos
-    @contactosfallidos = Contacto.where(usuario_id: current_user.id, valido: false).paginate(page: params[:page], per_page: 10)
+    if current_user
+      @contactosfallidos = Contacto.where(usuario_id: current_user.id, valido: false).paginate(page: params[:page], per_page: 10)
+    else
+      redirect_to home_path 
+    end
   end
  
 
